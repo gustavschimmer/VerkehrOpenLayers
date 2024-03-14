@@ -20,84 +20,72 @@
     text-decoration: none;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-#sidebar {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 250px; /* Breite der Menüleiste anpassen */
-    height: 100%;
-    background-color: #f0f0f0; /* Hintergrundfarbe der Menüleiste */
-    border-left: 1px solid #ccc; /* Trennlinie zur Karte */
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-#menu {
-    margin-bottom: 20px; /* Abstand zwischen Menü und weiteren Inhalten */
-}
-
-/* Stil für die gesamte Website */
+/* Allgemeine Stile */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
-    background-color: #f2f2f2; /* Grauer Hintergrund */
+    background-color: #ffffff; /* Weißer Hintergrund */
     overflow: hidden; /* Verhindert Scrollbalken */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Moderne Schriftart */
 }
 
+/* Kartencontainer */
 #map {
     height: 100%;
     width: calc(100% - 300px); /* Abzug der Sidebar-Breite */
     float: left;
 }
 
+/* Sidebar-Stile */
 #sidebar {
+    position: fixed;
+    top: 65px;
+    right: 20px;
     width: 300px;
     height: 100%;
-    float: right;
-    background-color: #ddd; /* Grauer Hintergrund der Sidebar */
-}
-
-/* Stil für die Menüleiste */
-#menu {
+    background-color: #ffffff; /* Weißer Hintergrund */
+    border-left: 1px solid #ccc; /* Trennlinie zur Karte */
     padding: 20px;
+    box-sizing: border-box;
+    font-size: 20px; /* Schriftgröße für die Sidebar */
 }
 
-/* Dropdown-Menü für Hintergrundkarten */
-#basemap-select {
-    margin-bottom: 20px;
-    font-weight: bold; /* Fett schreiben */
+#sidebar-header {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px; /* Abstand nach unten */
+    font-weight: bold;
+}
+
+.menu-item {
+    margin-bottom: 10px; /* Abstand zwischen den Menüpunkten */
+}
+
+/* Dropdown-Menüs */
+label {
+    font-weight: bold; /* Fett anzeigen */
+    margin-bottom: 10px; /* Abstand nach unten */
+}
+
+/* Dropdown-Menü-Container */
+#menu {
+    padding: 20px; /* Innenabstand */
+    margin-bottom: 20px; /* Abstand nach unten */
+}
+
+/* Dropdown-Menü-Optionen */
+select {
+    margin-bottom: 20px; /* Abstand nach unten */
 }
 
 /* Überschrift am oberen Rand */
-#header {
-    text-align: center;
-    padding: 20px 0;
-    font-weight: bold; /* Fett schreiben */
-    font-family: 'Roboto', sans-serif; /* Schriftart hinzufügen */
-}
-
-  /* Stil für die Menüleiste */
-  #menu {
-    margin-bottom: 20px; /* Mehr Platz unter der Überschrift */
-}
-
-/* Stil für die Überschrift "Backgroundmap" */
-label {
-    font-weight: bold; /* Fett anzeigen */
-    margin-bottom: 10px; /* Mehr Platz unter der Überschrift */
-}
-
-/* Stil für die Überschrift "Verkehrswendekarte Europe" */
 #title {
-    text-align: center; /* Zentriert am oberen Rand */
-    font-size: 24px; /* Größe der Überschrift */
-    margin-top: 20px; /* Mehr Platz über der Überschrift */
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px; /* Abstand nach oben */
+    margin-bottom: 20px; /* Abstand nach unten */
+    font-weight: bold;
 }

@@ -14,35 +14,42 @@
         <div id="popup-content"></div>
     </div>
     <div id="sidebar">
-        <!-- Kompaktes Menü für kleine Bildschirme -->
+        <div id="sidebar-header">Legend</div>
+
         <div id="menu">
             <!-- Dropdown-Menü für Hintergrundkarten -->
-            <label for="basemap-select">Backgroundmap:</label>
-            <select id="basemap-select">
-                <option value="https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">Dark Matter</option>
-                <option value="https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">Light Matter</option>
-                <!-- Weitere Optionen hier einfügen -->
-            </select>
-
+            <div class="menu-item">
+                <label for="basemap-select">Backgroundmap:</label>
+                <select id="basemap-select">
+                    <option value="https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">Dark Matter</option>
+                    <option value="https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">Light Matter</option>
+                    <!-- Weitere Optionen hier einfügen -->
+                </select>
+            </div>
+        
             <!-- Dropdown-Menü für Status -->
-            <label for="status-select">Status:</label>
-            <select id="status-select">
-                <option value="all">Show all</option>
-                <option value="Currently Being Implemented">In Progress at the moment</option>
-                <option value="Planning">In Planning</option>
-                <option value="Implemented">Already Implemented</option>
-                <!-- Weitere Optionen hier einfügen -->
-            </select>
-
+            <div class="menu-item">
+                <label for="status-select">Status:</label>
+                <select id="status-select">
+                    <option value="all">Show all</option>
+                    <option value="Currently Being Implemented">In Progress at the moment</option>
+                    <option value="Planning">In Planning</option>
+                    <option value="Implemented">Already Implemented</option>
+                    <!-- Weitere Optionen hier einfügen -->
+                </select>
+            </div>
+        
             <!-- Dropdown-Menü für Measures -->
-            <label for="measures-select">Measures:</label>
-            <select id="measures-select">
-                <option value="all">Show all</option>
-                <option value="Promoting Public Transit">Promoting Public Transit</option>
-                <option value="Reducing CO2 Emissions">Reducing CO2 Emissions</option>
-                <option value="Promoting Pedestrian Traffic">Promoting Pedestrian Traffic</option>
-                <!-- Weitere Optionen hier einfügen -->
-            </select>
+            <div class="menu-item">
+                <label for="measures-select">Measures:</label>
+                <select id="measures-select">
+                    <option value="all">Show all</option>
+                    <option value="Promoting Public Transit">Promoting Public Transit</option>
+                    <option value="Reducing CO2 Emissions">Reducing CO2 Emissions</option>
+                    <option value="Promoting Pedestrian Traffic">Promoting Pedestrian Traffic</option>
+                    <!-- Weitere Optionen hier einfügen -->
+                </select>
+            </div>
         </div>
     </div>
     <script src="v9.0.0-package\dist\ol.js"></script>
