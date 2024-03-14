@@ -5,40 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenLayers Basemap</title>
     <link rel="stylesheet" href="styles.css" type="text/css">
-    <style>
-        /* Optimierung für kleine Bildschirme */
-        @media screen and (max-width: 600px) {
-            #map {
-                width: 100%;
-                height: 300px; /* Anpassen der Höhe je nach Bedarf */
-            }
-            #sidebar {
-                display: none; /* Sidebar standardmäßig verstecken */
-                flex-direction: column;
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 200px;
-                background-color: #fff;
-                z-index: 1000;
-            }
-            #menu select {
-                margin-bottom: 5px;
-            }
-            #toggle-sidebar-btn {
-                position: fixed;
-                top: 10px;
-                left: 10px;
-                z-index: 1001;
-                cursor: pointer;
-            }
-        }
-    </style>
 </head>
 <body>
     <h1 id="title">Transport Transition Map Europe</h1> <!-- Überschrift am oberen Rand -->
     <div id="map" class="map"></div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
     <div id="sidebar">
         <!-- Kompaktes Menü für kleine Bildschirme -->
         <div id="menu">
@@ -71,22 +45,7 @@
             </select>
         </div>
     </div>
-    <!-- Button zum Ein- und Ausblenden der Sidebar -->
-    <div id="toggle-sidebar-btn">&#9776; Menu</div>
-
     <script src="v9.0.0-package\dist\ol.js"></script>
     <script src="script.js"></script>
-
-    <script>
-        // JavaScript zum Ein- und Ausblenden der Sidebar
-        document.getElementById('toggle-sidebar-btn').addEventListener('click', function() {
-            var sidebar = document.getElementById('sidebar');
-            if (sidebar.style.display === 'none') {
-                sidebar.style.display = 'flex';
-            } else {
-                sidebar.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
