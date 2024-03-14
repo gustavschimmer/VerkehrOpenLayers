@@ -84,6 +84,19 @@ var popupOverlay = new ol.Overlay({
 });
 map.addOverlay(popupOverlay);
 
+// Eventlistener für Klick auf die Karte, um das Popup zu schließen
+map.on('click', function (event) {
+    var featureClicked = false;
+    map.forEachFeatureAtPixel(event.pixel, function (feature) {
+        featureClicked = true;
+    });
+
+    if (!featureClicked) {
+        // Schließen des Popups
+        popupOverlay.setPosition(undefined);
+    }
+});
+
 // Eventlistener für Klick auf die Features im Vektorlayer hinzufügen
 map.on('click', function (event) {
     map.forEachFeatureAtPixel(event.pixel, function (feature) {
@@ -218,3 +231,105 @@ else if (status === selectedStatus) {
     });
 });
 
+// Eventlistener für Änderungen im Dropdown-Menü für die Measures
+document.getElementById('measures-select').addEventListener('change', function() {
+    // Measures des ausgewählten Elements im Dropdown-Menü erhalten
+    var selectedMeasure = this.value;
+
+    // Den Vektorlayer dynamisch aktualisieren, um nur Polygone mit der ausgewählten Measure anzuzeigen
+    vectorLayer.setStyle(function(feature, resolution) {
+        // Hier wird die Measures aus der GeoJSON-Datei gelesen
+        var measures = feature.get('Measures');
+        
+        // "Show All" Option
+        if (selectedMeasure === 'all') {
+            // Hier kannst du basierend auf der Measures die Style-Logik anpassen
+            // Zum Beispiel könntest du verschiedene Farben für verschiedene Measures verwenden
+            var strokeColor;
+            // Setze die Farben basierend auf der ausgewählten Measure
+            switch (measures) {
+                case 'Promoting Public Transit':
+                    strokeColor = '#f1eef6'; // Pink für "Promoting Public Transit"
+                    break;
+                case 'Reducing CO2 Emissions':
+                    strokeColor = '#d7b5d8'; // Pink für "Reducing CO2 Emissions"
+                    break;
+                case 'Promoting Pedestrian Traffic':
+                    strokeColor = '#df65b0'; // Pink für "Promoting Pedestrian Traffic"
+                    break;
+                default:
+                    strokeColor = '#dd1c77'; // Pink für andere Measures
+            }
+
+            var area = 0; // Fläche des Polygons
+            var geometry = feature.getGeometry();
+            
+            // Fläche des Polygons berechnen
+            if (geometry.getType() === 'Polygon') {
+                area = ol.sphere.getArea(geometry);
+            }
+
+            var strokeWidth = 2;
+
+            // Z-Index basierend auf der Fläche festlegen
+            var zIndex = area ? +area : 0; // Negativer Z-Index für größere Polygone
+
+            return new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(0, 0, 0, 0)' // Transparente Fläche
+                }),
+                stroke: new ol.style.Stroke({
+                    color: strokeColor,
+                    width: strokeWidth
+                }),
+                zIndex: zIndex // Z-Index basierend auf Fläche
+            });
+        }
+        // Nur Polygone mit der ausgewählten Measure anzeigen
+        else if (measures === selectedMeasure) {
+            var area = 0; // Fläche des Polygons
+            var geometry = feature.getGeometry();
+            
+            // Fläche des Polygons berechnen
+            if (geometry.getType() === 'Polygon') {
+                area = ol.sphere.getArea(geometry);
+            }
+
+            var strokeWidth = 2;
+
+            // Z-Index basierend auf der Fläche festlegen
+            var zIndex = area ? -area : 0; // Negativer Z-Index für größere Polygone
+
+            // Hier wird die Measures aus der GeoJSON-Datei gelesen
+            var strokeColor;
+            // Setze die Farben basierend auf der ausgewählten Measure
+            switch (measures) {
+                case 'Promoting Public Transit':
+                    strokeColor = '#f1eef6'; // Pink für "Promoting Public Transit"
+                    break;
+                case 'Reducing CO2 Emissions':
+                    strokeColor = '#d7b5d8'; // Pink für "Reducing CO2 Emissions"
+                    break;
+                case 'Promoting Pedestrian Traffic':
+                    strokeColor = '#df65b0'; // Pink für "Promoting Pedestrian Traffic"
+                    break;
+                default:
+                    strokeColor = '#dd1c77'; // Pink für andere Measures
+            }
+
+            return new ol.style.Style({
+                fill: new ol.style.Fill({
+                    color: 'rgba(0, 0, 0, 0)' 
+                }),
+                stroke: new ol.style.Stroke({
+                    color: strokeColor, // Farbe für den Rand
+                    width: strokeWidth
+                }),
+                zIndex: zIndex // Z-Index basierend auf Fläche
+            });
+        } else {
+            // Leerer Stil für Polygone mit anderen Measures
+            return null;
+        }
+    });
+});
