@@ -33,18 +33,18 @@ body, html {
 
 /* Kartencontainer */
 #map {
-    height: 100%;
-    width: calc(100% - 300px); /* Abzug der Sidebar-Breite */
+    height: calc(100% - 50px); /* Abzug der Höhe der Leiste */
+    width: calc(100% - 400px); /* Abzug der Sidebar-Breite */
     float: left;
 }
 
 /* Sidebar-Stile */
 #sidebar {
     position: fixed;
-    top: 65px;
+    top: 90px; /* Anpassung an die Höhe der Leiste */
     right: 20px;
-    width: 300px;
-    height: 100%;
+    width: 400px;
+    height: calc(100% - 90px); /* Anpassung an die Höhe der Leiste */
     background-color: #ffffff; /* Weißer Hintergrund */
     border-left: 1px solid #ccc; /* Trennlinie zur Karte */
     padding: 20px;
@@ -53,11 +53,12 @@ body, html {
 }
 
 #sidebar-header {
+    height: 50px; /* Höhe der Leiste */
     text-align: center;
+    line-height: 50px; /* Vertikal zentrierte Überschrift */
     font-size: 24px;
-    margin-top: 20px;
-    margin-bottom: 20px; /* Abstand nach unten */
     font-weight: bold;
+    margin-bottom: 20px; /* Abstand nach unten */
 }
 
 .menu-item {
@@ -83,9 +84,19 @@ select {
 
 /* Überschrift am oberen Rand */
 #title {
+    height: 50px; /* Höhe der Leiste */
+    line-height: 50px; /* Vertikal zentrierte Überschrift */
     text-align: center;
     font-size: 30px;
     margin-top: 20px; /* Abstand nach oben */
     margin-bottom: 20px; /* Abstand nach unten */
     font-weight: bold;
+}
+
+#explanation {
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    width: 95%;
+    text-align: justify;
 }
