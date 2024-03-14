@@ -1,0 +1,103 @@
+/* Stil für Popups */
+.ol-popup {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    bottom: 12px;
+    left: -150px;
+    min-width: 280px;
+    display: none;
+}
+
+.ol-popup-closer {
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px; /* Breite der Menüleiste anpassen */
+    height: 100%;
+    background-color: #f0f0f0; /* Hintergrundfarbe der Menüleiste */
+    border-left: 1px solid #ccc; /* Trennlinie zur Karte */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#menu {
+    margin-bottom: 20px; /* Abstand zwischen Menü und weiteren Inhalten */
+}
+
+/* Stil für die gesamte Website */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f2f2f2; /* Grauer Hintergrund */
+    overflow: hidden; /* Verhindert Scrollbalken */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Moderne Schriftart */
+}
+
+#map {
+    height: 100%;
+    width: calc(100% - 300px); /* Abzug der Sidebar-Breite */
+    float: left;
+}
+
+#sidebar {
+    width: 300px;
+    height: 100%;
+    float: right;
+    background-color: #ddd; /* Grauer Hintergrund der Sidebar */
+}
+
+/* Stil für die Menüleiste */
+#menu {
+    padding: 20px;
+}
+
+/* Dropdown-Menü für Hintergrundkarten */
+#basemap-select {
+    margin-bottom: 20px;
+    font-weight: bold; /* Fett schreiben */
+}
+
+/* Überschrift am oberen Rand */
+#header {
+    text-align: center;
+    padding: 20px 0;
+    font-weight: bold; /* Fett schreiben */
+    font-family: 'Roboto', sans-serif; /* Schriftart hinzufügen */
+}
+
+  /* Stil für die Menüleiste */
+  #menu {
+    margin-bottom: 20px; /* Mehr Platz unter der Überschrift */
+}
+
+/* Stil für die Überschrift "Backgroundmap" */
+label {
+    font-weight: bold; /* Fett anzeigen */
+    margin-bottom: 10px; /* Mehr Platz unter der Überschrift */
+}
+
+/* Stil für die Überschrift "Verkehrswendekarte Europe" */
+#title {
+    text-align: center; /* Zentriert am oberen Rand */
+    font-size: 24px; /* Größe der Überschrift */
+    margin-top: 20px; /* Mehr Platz über der Überschrift */
+}
