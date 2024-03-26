@@ -33,36 +33,39 @@ body, html {
 
 /* Kartencontainer */
 #map {
-    height: calc(100% - 50px); /* Abzug der Höhe der Leiste */
-    width: calc(100% - 400px); /* Abzug der Sidebar-Breite */
+    height: 100%; /* Abzug der Höhe der Leiste */
+    width: 100%; /* Abzug der Sidebar-Breite */
     float: left;
 }
 
-/* Sidebar-Stile */
 #sidebar {
     position: fixed;
-    top: 90px; /* Anpassung an die Höhe der Leiste */
-    right: 20px;
-    width: 400px;
-    height: calc(100% - 90px); /* Anpassung an die Höhe der Leiste */
-    background-color: #ffffff; /* Weißer Hintergrund */
-    border-left: 1px solid #ccc; /* Trennlinie zur Karte */
-    padding: 20px;
+    right: 30px;
+    top: 30px;
+    width: 400px; /* Breite auf 200px ändern */
+    height: 390px; /* Anpassung an die Höhe der Leiste */
+    background-color: #ffffffc0; /* Weißer Hintergrund */
+    margin-right: 20px;
     box-sizing: border-box;
     font-size: 20px; /* Schriftgröße für die Sidebar */
+    border-radius: 5%; /* Kreisförmige abgerundete Ecken */
+    color: #424242;
+
 }
+
 
 #sidebar-header {
-    height: 50px; /* Höhe der Leiste */
     text-align: center;
     line-height: 50px; /* Vertikal zentrierte Überschrift */
-    font-size: 24px;
+    font-size: 34px;
     font-weight: bold;
     margin-bottom: 20px; /* Abstand nach unten */
+    margin-top: 20px;
 }
 
+/* Container für Dropdown-Menü-Beschriftungen */
 .menu-item {
-    margin-bottom: 10px; /* Abstand zwischen den Menüpunkten */
+    margin-bottom: 60px; /* Abstand zwischen den Menüpunkten */
 }
 
 /* Dropdown-Menüs */
@@ -75,23 +78,99 @@ label {
 #menu {
     padding: 20px; /* Innenabstand */
     margin-bottom: 20px; /* Abstand nach unten */
+    text-align: left; /* Links ausrichten */
 }
 
 /* Dropdown-Menü-Optionen */
 select {
-    margin-bottom: 20px; /* Abstand nach unten */
+    appearance: none; /* Standard-Browser-Styling entfernen */
+    -webkit-appearance: none; /* Für Webkit-basierte Browser wie Chrome und Safari */
+    -moz-appearance: none; /* Für Mozilla-basierte Browser wie Firefox */
+    padding: 5px; /* Innenabstand */
+    border: 2px solid #ccc; /* Randstil */
+    border-radius: 5px; /* Abgerundete Ecken */
+    background-color: #f8f8f8; /* Hintergrundfarbe */
+    font-size: 20px; /* Schriftgröße */
+    color: #333; /* Textfarbe */
+    cursor: pointer; /* Zeiger beim Überfahren */
+    width: calc(100% - 180px); /* Vollbreite des Containers abzüglich Platz für Beschriftung */
+    box-sizing: border-box; /* Berücksichtigt das Padding und den Rand im Breitenwert */
+    float: right; /* Rechts ausrichten */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M7 10l5 5 5-5z" fill="currentColor"/></svg>'); /* Pfeil-Symbol */
+    background-repeat: no-repeat; /* Wiederholung des Hintergrundbilds verhindern */
+    background-position: right 10px center; /* Position des Symbols */
+    background-size: 16px; /* Größe des Symbols */
 }
 
-/* Überschrift am oberen Rand */
+/* Hover-Stil für Dropdown-Menü-Optionen */
+select:hover {
+    border-color: #aaa; /* Randfarbe beim Überfahren */
+}
+
+/* Focus-Stil für Dropdown-Menü-Optionen */
+select:focus {
+    outline: none; /* Standard-Fokus-Stil entfernen */
+    border-color: #66afe9; /* Randfarbe bei Fokus */
+    box-shadow: 0 0 5px rgba(102, 175, 233, 0.6); /* Schatten um das Dropdown-Menü bei Fokus */
+}
+
 #title {
-    height: 50px; /* Höhe der Leiste */
-    line-height: 50px; /* Vertikal zentrierte Überschrift */
-    text-align: center;
-    font-size: 30px;
-    margin-top: 20px; /* Abstand nach oben */
-    margin-bottom: 20px; /* Abstand nach unten */
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffffc0; /* Hintergrundfarbe */
+    color: #424242;
+    padding: 20px; /* Innenabstand */
+    border-radius: 40px; /* Kreisförmige abgerundete Ecken */
+    font-size: 2.5rem; /* Responsive Schriftgröße */
+    font-weight: bold;
+    z-index: 1;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Schatten für ein modernes Aussehen */
+}
+
+#explanation-popup {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 80px;
+    height: 80px;
+    background-color: #ffffffc0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;    
+    border-radius: 100%; /* Kreisförmige abgerundete Ecken */
+    padding: 10px; /* Innenabstand */
+}
+
+#explanation-icon {
+    font-size: 3rem; /* Responsive Schriftgröße */
+    color: #424242;
     font-weight: bold;
 }
+
+#explanation-content {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 300px;
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+#explanation-popup:hover #explanation-content {
+    display: block;
+}
+
+
+
 
 #explanation {
     position: absolute;
@@ -113,3 +192,4 @@ select {
     font-style: italic; /* kursiver Text */
     color: #555; /* Textfarbe */
 }
+

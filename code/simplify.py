@@ -14,7 +14,7 @@ input_file = '../masterBoundary.geojson'
 output_file = '../masterBoundary.geojson'
 
 # Toleranz für die Vereinfachung (10 Meter)
-tolerance = 100
+tolerance = 10
 
 # Projektionen definieren (WGS84 und UTM Zone 33N)
 wgs84 = pyproj.CRS('EPSG:4326')

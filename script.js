@@ -4,6 +4,33 @@ var vectorSource = new ol.source.Vector({
     format: new ol.format.GeoJSON()
 });
 
+// JavaScript-Code, um das Wasserzeichen dynamisch zu aktualisieren
+var watermark = document.getElementById('watermark');
+
+// Zuordnungstabelle für Anzeigetexte und URLs der Hintergrundkarten
+var basemapURLs = {
+    'Dark map': 'basemaps.cartocdn.com/dark_all',
+    'Light map': 'basemaps.cartocdn.com/light_all',
+    'OpenStreetMap': 'tile.openstreetmap.org'
+    // Weitere Hintergrundkarten hier hinzufügen
+};
+
+// Eventlistener für Änderungen im Dropdown-Menü für die Hintergrundkarten hinzufügen
+document.getElementById('basemap-select').addEventListener('change', function() {
+    // Wert der ausgewählten Hintergrundkarte abrufen
+    var selectedBasemap = this.options[this.selectedIndex].text;
+    
+    // Wasserzeichen entsprechend aktualisieren, falls der Anzeigetext in der Zuordnungstabelle existiert
+    if (selectedBasemap in basemapURLs) {
+        watermark.innerHTML = 'Drawn by: Gustav Schimmer<br>Background map: ' + basemapURLs[selectedBasemap];
+    } else {
+        watermark.innerHTML = 'Drawn by: Gustav Schimmer<br>Background map: ' + selectedBasemap;
+    }
+});
+
+
+
+
 // Vektorlayer für die GeoJSON-Datei
 var vectorLayer = new ol.layer.Vector({
     source: vectorSource,
@@ -347,3 +374,4 @@ document.getElementById('measures-select').addEventListener('change', function()
         }
     });
 });
+

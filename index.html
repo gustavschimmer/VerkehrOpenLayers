@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="styles.css" type="text/css">
 </head>
 <body>
-    <h1 id="title">Transport Transition Map Europe</h1> <!-- Überschrift am oberen Rand -->
+    <div id="title">Transport Transition Map Europe</div> <!-- Überschrift am oberen Rand -->
     <div id="map" class="map"></div>
-    <div id="watermark">Drawn by: Gustav Schimmer<br>Background maps: Carto DB</div> <!-- Wasserzeichen -->
+    <div id="watermark">Drawn by: Gustav Schimmer<br>Background map: basemaps.cartocdn.com/dark_all</div> <!-- Wasserzeichen -->
     <div id="popup" class="ol-popup">
         <a href="#" id="popup-closer" class="ol-popup-closer"></a>
         <div id="popup-content"></div>
@@ -20,46 +20,55 @@
         <div id="menu">
             <!-- Dropdown-Menü für Hintergrundkarten -->
             <div class="menu-item">
-                <label for="basemap-select">Backgroundmap:</label>
-                <select id="basemap-select">
-                    <option value="https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">Dark map</option>
-                    <option value="https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">Light map</option>
-                    <option value="https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png">OpenStreetMap</option>
-
-                    <!-- Weitere Optionen hier einfügen -->
-                </select>
+                <div class="menu-label">
+                    <label for="basemap-select">Backgroundmap:</label>
+                    <select id="basemap-select">
+                        <option value="https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png">Dark map</option>
+                        <option value="https://basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png">Light map</option>
+                        <option value="https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png">OpenStreetMap</option>
+                        <!-- Weitere Optionen hier einfügen -->
+                    </select>
+                </div>
             </div>
         
             <!-- Dropdown-Menü für Status -->
             <div class="menu-item">
-                <label for="status-select">Status:</label>
-                <select id="status-select">
-                    <option value="all">Show all</option>
-                    <option value="Currently Being Implemented">In Progress at the moment</option>
-                    <option value="Planning">In Planning</option>
-                    <option value="Implemented">Already Implemented</option>
-                    <!-- Weitere Optionen hier einfügen -->
-                </select>
+                <div class="menu-label">
+                    <label for="status-select">Status:</label>
+                    <select id="status-select">
+                        <option value="all">Show all</option>
+                        <option value="Currently Being Implemented">In Progress at the moment</option>
+                        <option value="Planning">In Planning</option>
+                        <option value="Implemented">Already Implemented</option>
+                        <!-- Weitere Optionen hier einfügen -->
+                    </select>
+                </div>
             </div>
         
             <!-- Dropdown-Menü für Measures -->
             <div class="menu-item">
-                <label for="measures-select">Measures:</label>
-                <select id="measures-select">
-                    <option value="all">Show all</option>
-                    <option value="Promoting Public Transit">Promoting Public Transit</option>
-                    <option value="Reducing CO2 Emissions">Reducing CO2 Emissions</option>
-                    <option value="Promoting Pedestrian Traffic">Promoting Pedestrian Traffic</option>
-                    <!-- Weitere Optionen hier einfügen -->
-                </select>
+                <div class="menu-label">
+                    <label for="measures-select">Measures:</label>
+                    <select id="measures-select">
+                        <option value="all">Show all</option>
+                        <option value="Promoting Public Transit">Promoting Public Transit</option>
+                        <option value="Reducing CO2 Emissions">Reducing CO2 Emissions</option>
+                        <option value="Promoting Pedestrian Traffic">Promoting Pedestrian Traffic</option>
+                        <!-- Weitere Optionen hier einfügen -->
+                    </select>
+                </div>
             </div>
             <!-- Erklärungstext -->
-            <div id="explanation">
-                <h3>What is this map?</h3>
-                <p>
-                    Explore Europe's transportation transition with this interactive map. Discover measures promoting sustainable transportation and reducing carbon emissions. Use the dropdown menus to navigate different aspects of the transition process.
-                </p>
-            </div>
+        </div>
+        
+    </div>
+    <div id="explanation-popup">
+        <div id="explanation-icon">?</div>
+        <div id="explanation-content">
+            <h3>What is this map?</h3>
+            <p>
+                Explore Europe's transportation transition with this interactive map. Discover measures promoting sustainable transportation and reducing carbon emissions. Use the dropdown menus to navigate different aspects of the transition process.
+            </p>
         </div>
     </div>
     <script src="v9.0.0-package\dist\ol.js"></script>
