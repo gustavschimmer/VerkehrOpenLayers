@@ -100,3 +100,16 @@ select {
     width: 95%;
     text-align: justify;
 }
+
+/* Stil für das Wasserzeichen */
+#watermark {
+    position: fixed;
+    bottom: 10px; /* Abstand zum unteren Rand */
+    left: 10px; /* Abstand zum linken Rand */
+    background-color: rgba(255, 255, 255, 0.8); /* Hintergrundfarbe mit Transparenz */
+    padding: 5px 10px; /* Innenabstand */
+    border-radius: 5px; /* abgerundete Ecken */
+    font-size: 12px; /* Schriftgröße */
+    font-style: italic; /* kursiver Text */
+    color: #555; /* Textfarbe */
+}

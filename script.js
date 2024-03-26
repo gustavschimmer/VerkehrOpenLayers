@@ -100,14 +100,25 @@ map.on('click', function (event) {
 // Eventlistener für Klick auf die Features im Vektorlayer hinzufügen
 map.on('click', function (event) {
     map.forEachFeatureAtPixel(event.pixel, function (feature) {
-        var name = feature.get('name');
+        var name = feature.get('name').charAt(0).toUpperCase() + feature.get('name').slice(1).toLowerCase(); // Ersten Buchstaben groß, Rest klein
         var measures = feature.get('Measures');
         var status = feature.get('Status');
 
+        var measuresArray = measures.split(', '); // Measures in ein Array aufteilen
+        var statusArray = status.split(', '); // Status in ein Array aufteilen
+
         var content = '<ul>';
-        content += '<li><strong>Name:</strong> ' + name + '</li>';
-        content += '<li><strong>Measures:</strong> ' + measures + '</li>';
-        content += '<li><strong>Status:</strong> ' + status + '</li>';
+        content += '<strong>Name:</strong> ' + name + '</p>'; // Leerzeile nach dem Stadtname
+        // Schleife durch alle Measures
+        for (var i = 0; i < measuresArray.length; i++) {
+            // Listenelement für jedes Measure-Status-Paar erstellen
+            content += '<li><strong>Measure ' + (i + 1) + ':</strong> ' + measuresArray[i] + '</li>'; // Measures nummerieren
+            content += '<li><strong>Status:</strong> ' + statusArray[i] + '</li>';
+            // Falls es mehr als ein Measure gibt und es nicht das letzte Measure ist, füge eine Leerzeile hinzu
+            if (i < measuresArray.length - 1) {
+                content += '<p></p>'; // Leerzeile einfügen
+            }
+        }
         content += '</ul>';
 
         // Position des Popups relativ zur Mausposition einstellen
@@ -122,6 +133,9 @@ map.on('click', function (event) {
         popupOverlay.getElement().style.display = 'block';
     });
 });
+
+
+
 
 // Eventlistener für Änderungen im Dropdown-Menü hinzufügen backgroundmap
 document.getElementById('basemap-select').addEventListener('change', function() {
